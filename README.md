@@ -1,4 +1,4 @@
-# 🌐 The Nexus Marketplace
+# The Nexus Marketplace
 
 **The Nexus Marketplace** is a work-in-progress project for a college course, where we're exploring the idea of creating an online marketplace.  
 The general concept is to build a platform where users can **buy, sell, or trade** digital goods, physical products, or services — but the exact scope is still being decided.
@@ -7,7 +7,7 @@ Right now, this repository is primarily for **planning, experimenting, and learn
 
 ---
 
-## 📝 Project Overview
+## Project Overview
 
 At this stage, the project is still in **brainstorming and early development**.  
 Some initial ideas we're considering for the marketplace include:
@@ -18,11 +18,11 @@ Some initial ideas we're considering for the marketplace include:
 - Secure checkout and payment integration
 - Search and filtering to find items easily
 
-> ⚠️ Nothing is final yet — features will change as the project develops.
+> Nothing is final yet — features will change as the project develops.
 
 ---
 
-## 👥 Development Team
+## Development Team
 - **Tristan Duffy** – N/A
 - **Nathan Morgan** – N/A
 - **Levi Mair** – N/A
