@@ -1,9 +1,8 @@
 # The Nexus Marketplace
 
 **The Nexus Marketplace** is a work-in-progress project for HND Software Development, where we're exploring the idea of creating an online marketplace.  
-The general concept is to build a platform where users can **buy, sell, or trade** digital goods, physical products, or services — but the exact scope is still being decided.
+The general concept is to build a platform where users can **buy, sell, or trade** digital goods, physical products, or services.
 
-Right now, this repository is primarily for **planning, experimenting, and learning**. Expect frequent changes as the project evolves.
 > FOR CLASS: QB-25/26-17-Y00073-J7EE48-U001029-PROFESSIONAL PRACTICE IN SOFTWARE DEVELOPMENT
 ---
 
