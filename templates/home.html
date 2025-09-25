@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="top-nav">
+                {% if session.get('privilege') != 0 %}
+                <a href="{{ url_for('admin.admin_panel') }}" class="admin-btn">Admin Panel</a>
+                {% endif %}
+                <a href="/support">Support</a>
+                <a href="/account">Account</a>  
+                <a href="/sponsor">Sponsor</a>
+                <form method="POST" action="/logout">
+                    {{ logout_form.hidden_tag() }}
+                    {{ logout_form.logoutSubmit() }}
+                </form>
+            </nav>
+            <h1>Welcome to the Nexus Marketplace, <span>{{ username }}</span></h1>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="create-listing-btn-container">
+             <button id="createListingBtn">
+                Create New Listing
+            </button>
+        </div>
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal" id="createListingModal">
+            <h2>Create a New Listing</h2>
+            <form method="POST" action="/create_listing" enctype="multipart/form-data">
+                {{ CLForm.hidden_tag() }}
+                <div class="form-group">
+                    {{ CLForm.title.label }}
+                    {{ CLForm.title() }}
+                </div>
+                 <div class="form-group">
+                    {{ CLForm.description.label }}
+                    {{ CLForm.description() }}
+                </div>
+                 <div class="form-group">
+                    {{ CLForm.price.label }}
+                    {{ CLForm.price() }}
+                </div>
+                 <div class="form-group">
+                    {{ CLForm.image.label }}
+                    {{ CLForm.image() }}
+                </div>
+                {{ CLForm.submit() }}
+            </form>
+            <button id="closeModalBtn">Close</button>
+        </div>
+
+        <div class="grid">
+            {% for listing in listings %}
+            <div class="listing">
+                <img src="{{ url_for('static', filename=listing.image_url.split('static/')[-1]) if listing.image_url else url_for('static', filename='placeholder.png') }}" alt="{{ listing.name }}">
+                <div class="listing-content">
+                    <h2>{{ listing.name }}</h2>
+                    <p>{{ listing.description }}</p>
+                    <p class="price"><strong>Price:</strong> ${{ listing.price }}</p>
+                    <p class="posted-by"><strong>Posted by:</strong> {{ listing.username }}</p>
+
+                    <div class="button-container">
+                        {% if not listing.is_sold %}
+                            <form method="POST" action="{{ url_for('home.buy_listing', listing_id=listing.id) }}">
+                                {{ BuyListForm.hidden_tag() }}
+                                <button type="submit" class="buy-button">Buy Now</button>
+                            </form>
+                        {% else %}
+                            <p class="sold-status"><strong>Sold to {{ listing.buyer_username }}</strong></p>
+                        {% endif %}
+
+                        {% if session['username'] == listing.username or session.get('privilege') != 0 %}
+                            <form method="POST" action="/delete_listing/{{ listing.id }}">
+                                {{ DelListForm.hidden_tag() }}
+                                <button type="submit" class="delete-button">Delete Listing</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div> 
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+body{
+    font-family: arial;
+}
+h2{
+    font-size: 35px;
+    font-weight: 500;
+}
+span{
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+}
+
+a{
+    color: black;
+}
+
+#center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 50%;
+    text-align: center;
+}
+
+#LoginContainer{
+    position: relative;
+    height: 100vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+input:focus {
+    outline: none;
+}
+
+#username,#password{
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px rgb(119, 119, 119) solid;
+    background-color: rgba(235, 235, 235, 0.555);
+}
+
+#LoginButt{
+    background-color: rgb(80, 112, 255);
+    border-style: none;
+    border-radius: 10rem;
+    padding: 0.7rem 10rem 0.7rem 10rem;
+    color: white;
+    font-size: 20px;
+}
+#LoginButt:hover{
+    background-color:rgb(102, 129, 248);
+}
+
+#green{color: green;}

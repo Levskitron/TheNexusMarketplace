@@ -1,0 +1,401 @@
+/* padding fix for boxes */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Apply Inter font if loaded */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #374151;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Header Styling */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header .container {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.header h1 span {
+    color: #2563eb;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header nav a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+.header nav form {
+    display: inline-block;
+}
+
+ .header nav form button {
+    color: #dc2626;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+ }
+
+ .header nav form button:hover {
+     text-decoration: underline;
+ }
+
+/* Create Listing Button Styling */
+.create-listing-btn-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#createListingBtn {
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#createListingBtn:hover {
+    background-color: #1d4ed8;
+}
+
+ #createListingBtn:focus {
+     box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
+ }
+
+
+/* Modal Overlay Custom Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    display: none;
+    backdrop-filter: blur(5px);
+}
+
+/* Modal Custom Styles */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    max-width: 90%;
+    width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Active state to display modal and overlay */
+.modal.active,
+.modal-overlay.active {
+    display: block;
+}
+
+/* Style for form inputs within the modal */
+.modal h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+}
+
+.modal form .form-group {
+    margin-bottom: 1rem;
+}
+
+.modal form label {
+    display: block;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.modal form input[type="text"],
+.modal form input[type="number"],
+.modal form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    color: #374151;
+    line-height: 1.25;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    appearance: none;
+    outline: none;
+}
+
+.modal form input[type="text"]:focus,
+.modal form input[type="number"]:focus,
+.modal form textarea:focus {
+     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+
+.modal form textarea {
+     height: 6rem;
+     resize: vertical;
+}
+
+.modal form input[type="file"] {
+     display: block;
+     width: 100%;
+     font-size: 0.875rem;
+     color: #6b7280;
+     padding-top: 0.5rem;
+     padding-bottom: 0.5rem;
+}
+
+.modal form input[type="file"]::file-selector-button {
+     margin-right: 1rem;
+     padding: 0.5rem 1rem;
+     border-radius: 9999px;
+     border: 0;
+     font-size: 0.875rem;
+     font-weight: 600;
+     background-color: #eff6ff;
+     color: #1d4ed8;
+     cursor: pointer;
+     transition: background-color 0.2s ease-in-out;
+}
+
+.modal form input[type="file"]::file-selector-button:hover {
+     background-color: #dbeafe;
+}
+
+
+.modal form button[type="submit"] {
+    background-color: #22c55e;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    outline: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin-top: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.modal form button[type="submit"]:hover {
+     background-color: #16a34a;
+}
+
+#closeModalBtn {
+    margin-top: 1rem;
+    background-color: #d1d5db;
+    color: #1f2937;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    outline: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+ #closeModalBtn:hover {
+     background-color: #9ca3af;
+ }
+
+
+/* Listings Grid Styling */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Responsive Grid Adjustments */
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+
+/* Listing Card Styling */
+.listing {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.listing img {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+}
+
+.listing .listing-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.listing h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.listing p {
+    color: #4b5563;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    flex-grow: 1;
+}
+
+.listing p strong {
+     font-weight: 700;
+     color: #111827;
+}
+
+ .listing .price {
+     font-size: 1.125rem;
+     font-weight: 700;
+     color: #111827;
+     margin-bottom: 0.75rem;
+ }
+
+ .listing .posted-by {
+     color: #374151;
+     font-size: 0.875rem;
+     margin-bottom: 1rem;
+ }
+
+.listing .button-container {
+    margin-top: auto;
+}
+
+.listing .button-container form {
+    width: 100%;
+}
+
+.listing .button-container button {
+    width: 100%;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.listing .button-container .buy-button {
+    background-color: #22c55e;
+    color: #ffffff;
+}
+
+.listing .button-container .buy-button:hover {
+    background-color: #16a34a;
+}
+
+ .listing .button-container .buy-button:focus {
+     box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.5);
+ }
+
+
+.listing .button-container .delete-button {
+    background-color: #ef4444;
+    color: #ffffff;
+    margin-top: 0.5rem;
+}
+
+.listing .button-container .delete-button:hover {
+     background-color: #dc2626;
+}
+
+ .listing .button-container .delete-button:focus {
+     box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.5);
+ }
+
+
+.listing .sold-status {
+    color: #dc2626;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0.5rem;
+}

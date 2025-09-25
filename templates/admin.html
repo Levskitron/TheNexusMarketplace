@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <p><a href="{{ url_for('home.home_page') }}">Back to Home</a></p>
+        
+        <h2>Manage Users</h2>
+        
+        <ul class="user-list">
+            {% for user in users %}
+            <li>
+                <strong>{{ user.username }}</strong>
+                <form method="POST" action="{{ url_for('admin.delete_user', user_id=user.id) }}" style="display:inline;">
+                    {{ delete_account.hidden_tag() }}
+                    {{ delete_account.submit() }}
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+            <!-- Flash message section for the most recent message -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="flash-message">
+                {{ messages[-1] }}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+        <h1>Register Admin</h1>
+        <form method="POST" action="/registerAdmin">
+            {{create_admin_form.hidden_tag()}}
+            {{create_admin_form.username.label}} {{create_admin_form.username()}}<br>
+            {{create_admin_form.password.label}} {{create_admin_form.password()}}<br>
+            {{create_admin_form.submit()}}
+        </form>
+    </div>
+</body>
+</html>

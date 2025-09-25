@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$ellix Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/support.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="top-nav">
+            <a href="{{ url_for('home.home_page') }}">Home</a>
+            {% if session.get('privilege') != 0 %}
+            <a href="{{ url_for('admin.admin_panel') }}" class="admin-btn">Admin Panel</a>
+            {% endif %}
+            <a href="/account">Account</a>
+            <a href="/sponsor">Sponsor</a>
+            <a href="/support">Support</a>
+        </nav>
+            <h1><span class="brand">$ellix</span> Support Center</h1>
+            <p>How can we help you today?</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I reset my password?</div>
+                <div class="faq-answer">
+                    1. Go to the login page<br>
+                    2. Click "Forgot Password"<br>
+                    3. Enter your email<br>
+                    4. Check your inbox for reset instructions
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long do refunds take?</div>
+                <div class="faq-answer">
+                    1. Refunds are processed within 3-5 business days<br>
+                    2. Allow 5-10 days for bank processing<br>
+                    3. Contact your bank if not received after 15 days
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How to create a listing?</div>
+                <div class="faq-answer">
+                    1. Click the "Create New Listing" button near the top middle of the page<br>
+                    2. Select a title for the item<br>
+                    3. Select a description and price for the item<br>
+                    4. Select an image for your item<br>
+                    5. Click the "Create Listing" button at the bottom of the form.<br>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Prompt -->
+        <div class="contact-prompt">
+            <h3>Still Need Help?</h3>
+            <p>If your question wasn't answered above, please fill out the form below and our team will assist you.</p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-section">
+            <h2 class="form-title">Contact Our Support Team</h2>
+            <form id="supportForm" onsubmit="showSuccess(event)">
+                <div class="input-group">
+                    <div class="form-group">
+                        <input type="text" id="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank you for your message!</h3>
+            <p>Rest assured we will be in touch with you as soon as possible.</p>
+        </div>
+    </div>
+
+    <script>
+        function showSuccess(event) {
+            event.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('supportForm').reset();
+            window.scrollTo({
+                top: document.getElementById('successMessage').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize FAQ functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', () => {
+                    const answer = item.nextElementSibling;
+                    answer.classList.toggle('show');
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

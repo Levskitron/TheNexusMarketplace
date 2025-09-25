@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Account Details</h1>
+        <p>Your listings:</p>
+        <ul>
+            {% for listing in user_listings %}
+            <li>{{ listing.name }} - {{ listing.description }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/home">Home</a>
+
+        <form method="POST" action="/logout">
+            {{ logout_form.hidden_tag() }}
+            {{ logout_form.logoutSubmit() }}
+        </form>
+        
+        <h1>Change Password</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <p>{{ messages[-1] }}</p> <!-- Show only the most recent flash message -->
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('auth.change_password') }}">
+            {{ form.hidden_tag() }}
+            <label for="old_password">{{ form.old_password.label }}</label>
+            {{ form.old_password(size=32) }}<br>
+            <label for="new_password">{{ form.new_password.label }}</label>
+            {{ form.new_password(size=32) }}<br>
+            <label for="confirm_password">{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password(size=32) }}<br>
+            {{ form.submit() }}
+        </form>
+
+        <h1>Delete Account</h1>
+        <form method="POST" action="{{ url_for('auth.delete_account') }}" onsubmit="return confirmDeletion()">
+            {{ delete_account.hidden_tag() }}
+            {{ delete_account.submit() }}
+        </form>
+
+        <script>
+            function confirmDeletion() {
+                return confirm('Are you sure you want to delete your account? This action cannot be undone.');
+            }
+        </script>
+    </div>
+</body>
+</html>

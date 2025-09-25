@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>Login</title>
+</head>
+<body>
+
+
+    <div id="LoginContainer">
+<div id="center">
+    <h2>Sign in to your account</h2>
+   
+  <form method="POST" action="/login">
+    {{ form.hidden_tag() }}
+    
+    {{ form.username(class="input-field", id="username", placeholder="Username", required=True) }}<br>
+    {{ form.password(class="input-field", id="password", placeholder="Password", required=True) }}<br>
+    {{ form.submit(class="submit-button", id="LoginButt") }}
+</form>
+
+<p>New to <span id="green">$</span>ELLIX? <a href="/register">Create Account</a></p>
+    
+</div>
+    </div>
+
+</body>
+</html>
